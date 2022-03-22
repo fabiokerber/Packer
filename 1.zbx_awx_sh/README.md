@@ -1,6 +1,7 @@
 # Packer no Azure
 
-Checar versão Packer
+Checar versão Packer<br>
+Ideal inserir nas variáveis de ambiente<br>
 ```
 C:\packer\packer.exe -version
 ```
@@ -120,7 +121,12 @@ Listar imagens disponíveis no Azure
 az vm image list --location brazilsouth --publisher Canonical --offer UbuntuServer --all --output table
 az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --output table
 ```
-## Provisionar
+## Provisionar (v1.6.0)
 ```
-packer build awx.json
+C:\packer\packer.exe build awx_v1_6.json
+```
+
+## Provisionar (v1.6.0)
+```
+C:\packer\packer.exe build awx_v1_6.json
 ```
