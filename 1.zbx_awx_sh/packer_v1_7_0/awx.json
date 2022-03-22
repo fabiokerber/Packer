@@ -1,4 +1,4 @@
-packer {
+{
         "builders": [
             {
                 "type": "azure-arm",
@@ -11,8 +11,9 @@ packer {
                 "image_sku": "7.8",
                 "location": "brazilsouth",
                 "os_type": "Linux",
+                "vm_size": "Standard_B2s",
     
-                "managed_image_name": "vm-img-aa-awx-br-sh",
+                "managed_image_name": "vm-img-b-awx-br-sh",
                 "managed_image_resource_group_name": "rg-img-br-sh"
             }
         ]

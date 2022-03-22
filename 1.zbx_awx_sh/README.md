@@ -1,7 +1,12 @@
 # Packer no Azure
 
+Download Packer v1.7.0<br>
+```
+https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_windows_amd64.zip
+```
+
 Checar versão Packer<br>
-Ideal inserir nas variáveis de ambiente<br>
+Obs: Ideal inserir caminho do executável nas variáveis de ambiente<br>
 ```
 C:\packer\packer.exe -version
 ```
@@ -43,7 +48,7 @@ Após criado o registro, anote o *Application ID*<br>
 <br />
 <br />
 
-Ainda dentro do registro "packer-lab*, clique em *Certificates & secrets*<br>
+Ainda dentro do registro *packer-lab*, clique em *Certificates & secrets*<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Packer/blob/main/1.zbx_awx_sh/img/210320221416.png">
 </kbd>
@@ -121,12 +126,7 @@ Listar imagens disponíveis no Azure
 az vm image list --location brazilsouth --publisher Canonical --offer UbuntuServer --all --output table
 az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --output table
 ```
-## Provisionar (v1.6.0)
+## Provisionar
 ```
-C:\packer\packer.exe build awx_v1_6.json
-```
-
-## Provisionar (v1.6.0)
-```
-C:\packer\packer.exe build awx_v1_6.json
+C:\packer\packer.exe build awx.json
 ```
