@@ -126,7 +126,8 @@ Listar imagens disponíveis no Azure
 az vm image list --location brazilsouth --publisher Canonical --offer UbuntuServer --all --output table
 az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --output table
 ```
+
 ## Provisionar
 ```
-C:\packer\packer.exe build awx.json
+C:\packer\packer.exe build awx_v3.pkr.hcl
 ```
