@@ -1,8 +1,9 @@
 # Packer no Azure
 
-Download Packer v1.7.0<br>
+Download Packer<br>
 ```
 https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_windows_amd64.zip
+https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_windows_amd64.zip (validar)
 ```
 
 Checar versão Packer<br>
@@ -129,5 +130,5 @@ az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --
 
 ## Provisionar
 ```
-C:\packer\packer.exe build awx_v3.pkr.hcl
+C:\packer\packer.exe build awx.pkr.hcl
 ```

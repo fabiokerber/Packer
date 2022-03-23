@@ -14,7 +14,6 @@ source "azure-arm" "awx" {
   os_type                           = "Linux"
   vm_size                           = "Standard_B2s"
   managed_image_name                = "vm-img-${local.timestamp}-awx-br-sh"
-
   managed_image_resource_group_name = "rg-img-br-sh"
 }
 
