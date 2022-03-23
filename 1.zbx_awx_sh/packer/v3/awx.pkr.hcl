@@ -22,7 +22,7 @@ build {
   provisioner "shell" {
     script       = "script/awx.sh"
     pause_before = "1m"
-    pause_after = "20m"
+    pause_after  = "20m"
     timeout      = "30m"
   }
 }
