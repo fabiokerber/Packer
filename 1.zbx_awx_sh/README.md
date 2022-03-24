@@ -130,5 +130,8 @@ az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --
 
 ## Provisionar
 ```
-C:\packer\packer.exe build awx.pkr.hcl
+C:\packer\packer.exe init .
+C:\packer\packer.exe fmt .
+C:\packer\packer.exe validate .
+C:\packer\packer.exe build .
 ```

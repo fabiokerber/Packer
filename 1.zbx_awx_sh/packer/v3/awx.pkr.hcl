@@ -12,6 +12,7 @@ source "azure-arm" "awx" {
   image_sku                         = "7.8"
   location                          = "brazilsouth"
   os_type                           = "Linux"
+  temp_compute_name                 = "vm-awx-br-sh"
   vm_size                           = "Standard_B2s"
   managed_image_name                = "vm-img-${local.timestamp}-awx-br-sh"
   managed_image_resource_group_name = "rg-img-br-sh"
@@ -22,7 +23,7 @@ build {
   provisioner "shell" {
     script       = "script/awx.sh"
     pause_before = "1m"
-    pause_after  = "20m"
-    timeout      = "30m"
+    pause_after  = "30m"
+    timeout      = "40m"
   }
 }
