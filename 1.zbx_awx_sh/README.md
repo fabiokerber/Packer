@@ -1,5 +1,4 @@
 # Packer no Azure
-
 Download Packer<br>
 ```
 https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_windows_amd64.zip
@@ -13,7 +12,6 @@ C:\packer\packer.exe -version
 ```
 
 ## Configurar permissões no Azure
-
 Anote o ID da Subscription<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Packer/blob/main/1.zbx_awx_sh/img/210320221411.png">
@@ -114,9 +112,17 @@ Por fim, clique em *Review + assign*<br>
 <br />
 <br />
 
+## Enviar ID's ao Key Vault 
+```
+az group create -l brazilsouth -n rg-key-vault-br-sh
+az keyvault create --location brazilsouth --name key-vault-br-sh --resource-group rg-key-vault-br-sh
+az keyvault secret set --name arm-subscription-id --vault-name key-vault-br-sh --value "ee6222a2-c6ac-48ae-b6ad-b7fef2589b74"
+az keyvault secret set --name arm-client-id --vault-name key-vault-br-sh --value "4b9cf9e2-ba75-48a0-b56d-ba0ab00083af"
+az keyvault secret set --name arm-client-secret --vault-name key-vault-br-sh --value "4V67Q~CwjR16jokWxBD--NDHM0h1l~I5TtZ~x"
+az keyvault secret set --name arm-tenant-id --vault-name key-vault-br-sh --value "51fd35eb-5f5d-4077-b2cb-6e257ba1a75a"
+```
 
 ## Criar Resource Group e comandos de auxílio
-
 Criar resource group para armazenar as imagens
 ```
 az group create -l brazilsouth -n rg-img-br-sh
