@@ -1,0 +1,4 @@
+---
+packages:
+  - policycoreutils-python
+  - mysql-server
