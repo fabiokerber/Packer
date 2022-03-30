@@ -24,7 +24,7 @@
 - name: OPERATING SYSTEM | Check status SELINUX
   shell: "{{ item }}"
   with_items: 
-    - sestatus | grep -c enforced
+    - sudo sestatus | grep -c enforced
   register: sestatus
 
 - name: Disable SELINUX
