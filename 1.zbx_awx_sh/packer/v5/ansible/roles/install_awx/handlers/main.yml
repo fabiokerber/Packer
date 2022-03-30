@@ -1,0 +1,6 @@
+---
+
+- name: Restart firewalld
+  systemd: state=stopped enabled=no daemon_reload=yes name=firewalld
+
+...
