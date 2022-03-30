@@ -21,16 +21,9 @@
     state: stopped
     enabled: no
 
-- name: OPERATING SYSTEM | Check status SELINUX
-  shell: "{{ item }}"
-  with_items: 
-    - cat /etc/selinux/config | grep 'SELINUX=enforcing'
-  register: sestatus
-
-- name: Disable SELINUX
-  shell: "{{ item }}"
-  with_items:
-    - sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config && setenforce 0
-  when: sestatus.results[0].stdout != "1"
+- name: OPERATING SYSTEM | Disable Selinux
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
 
 ...
