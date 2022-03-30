@@ -1,4 +1,11 @@
 ---
+
 packages:
-  - policycoreutils-python
-  - mysql-server
+  - git
+  - make
+  - gcc
+  - perl-core
+  - pcre-devel
+  - zlib-devel
+
+...
