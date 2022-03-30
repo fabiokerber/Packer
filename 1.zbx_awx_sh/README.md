@@ -1,8 +1,17 @@
 # Packer no Azure
+
+|Código    |Descrição|
+|-------------|-----------|
+|`v1`| Arquivo Packer único com todos os dados para criação da imagem
+|`v2`| Arquivo Packer único com todos os dados para criação da imagem + Provisioner "Shell local"
+|`v3`| Arquivo Packer único com todos os dados para criação da imagem + Provisioner "Shell script" + AWX v20.0.1
+|`v4`| Estrutura de arquivos Packer + Provisioner "Shell script" + Ansible
+|`v5`| Estrutura de arquivos Packer + Provisioner "Ansible" + AWX
+
 Download Packer<br>
 ```
 https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_windows_amd64.zip
-https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_windows_amd64.zip (validar)
+https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_windows_amd64.zip
 ```
 
 Checar versão Packer<br>
@@ -112,6 +121,13 @@ Por fim, clique em *Review + assign*<br>
 <br />
 <br />
 
+## Logar no Azure
+```
+az login
+az account show
+az account set --subscription "Azure subscription 1" (verificar se está conectado na Subscription correta)
+```
+
 ## Criar Resource Group e comandos de auxílio
 Criar resource group para armazenar as imagens
 ```
@@ -127,10 +143,21 @@ az vm image list --location brazilsouth --publisher RedHat --offer RHEL --all --
 ## Provisionar (PowerShell)
 Obs: https://morgansimonsen.com/2018/03/21/packer-for-azure-peculiarities/<br>
 ```
+az login
+az account show
+az account set --subscription "Azure subscription 1" (verificar se está na Subscription correta)
 C:\packer\packer.exe init .
 C:\packer\packer.exe fmt .
 C:\packer\packer.exe validate .
 C:\packer\packer.exe validate --var-file=values.pkrvars.hcl .
 C:\packer\packer.exe build .
 C:\packer\packer.exe build --var-file=values.pkrvars.hcl -var "subscription_id=ee6222a2-c6ac-48ae-b6ad-b7fef2589b74" -var "tenant_id=51fd35eb-5f5d-4077-b2cb-6e257ba1a75a" -var "client_id=4b9cf9e2-ba75-48a0-b56d-ba0ab00083af" -var "client_secret=4V67Q~CwjR16jokWxBD--NDHM0h1l~I5TtZ~x" .
+```
+
+## Alterar values.tfvars Terraform
+```
+# Custom image
+image_rg   = "rg-img-br-sh"
+image_name = "vm-img-20220328154216-awx-br-sh"
+image_id   = "/subscriptions/ee6222a2-c6ac-48ae-b6ad-b7fef2589b74/resourceGroups/rg-img-br-sh/providers/Microsoft.Compute/images/vm-img-20220328154216-awx-br-sh"
 ```

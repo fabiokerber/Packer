@@ -1,5 +1,7 @@
 locals {
-  timestamp = regex_replace(timestamp(), "[- TZ:]", "")
+  now = timestamp()
+  brasilia_tz  = timeadd(local.now, "-3h") # Brazil's official time
+  date_br = formatdate("DDMMYYYYhhmm", local.brasilia_tz)
 }
 
 source "azure-arm" "awx" {
@@ -14,6 +16,6 @@ source "azure-arm" "awx" {
   os_type                           = "${var.os_type}"
   temp_compute_name                 = "${var.temp_compute_name}"
   vm_size                           = "${var.vm_size}"
-  managed_image_name                = "${local.timestamp}_${var.temp_compute_name}-"
+  managed_image_name                = "${local.date_br}_${var.temp_compute_name}-"
   managed_image_resource_group_name = "${var.managed_image_resource_group_name}"
 }
