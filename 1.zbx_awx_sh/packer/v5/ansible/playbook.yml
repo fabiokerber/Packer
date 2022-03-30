@@ -1,6 +1,5 @@
 ---
-- hosts: all
-  become: yes
+- hosts: localhost
   become_user: root
   become_method: sudo
   tasks:
