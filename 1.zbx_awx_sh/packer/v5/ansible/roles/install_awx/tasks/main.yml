@@ -24,14 +24,13 @@
 - name: OPERATING SYSTEM | Check status SELINUX
   shell: "{{ item }}"
   with_items: 
-    - sestatus | grep enforced
+    - sestatus | grep -c enforced
   register: sestatus
-  ignore_errors: yes
 
 - name: Disable SELINUX
   shell: "{{ item }}"
   with_items:
-    - sudo sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config && sudo setenforce 0
+    - sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config && setenforce 0
   when: sestatus.results[0].stdout != "0"
 
 ...
