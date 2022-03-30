@@ -1,11 +1,11 @@
 ---
 
-- name: Set timezone America/Sao_Paulo
+- name: OPERATING SYSTEM | Set timezone America/Sao_Paulo
   shell: "{{ item }}"
   with_items:
     - timedatectl set-timezone America/Sao_Paulo
 
-- name: Update system
+- name: OPERATING SYSTEM | Update system
   yum:
     name: "*"
     state: latest
@@ -15,19 +15,22 @@
     name: "{{ packages }}"
     state: latest
 
-- name: OPERATING SYSTEM | Restart and enable services
+- name: OPERATING SYSTEM | Stop and disable Firewalld
   ansible.builtin.systemd:
-    name: "{{ item }}"
+    name: firewalld
     state: stopped
     enabled: no
-  with_items:
-    - firewalld
+
+- name: OPERATING SYSTEM | Check status SELINUX
+  shell: "{{ item }}"
+  with_items: 
+    - sestatus | grep enforced
+  register: sestatus
 
 - name: Disable SELINUX
   shell: "{{ item }}"
   with_items:
     - sudo sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config && sudo setenforce 0
-  notify:
-    - Restart sshd
+  when: sestatus.results[0].stdout != "0"
 
 ...
