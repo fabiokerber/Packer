@@ -12,4 +12,4 @@ sudo touch /var/log/ansible.log && sudo chmod 777 /var/log/ansible.log
 # ssh-keygen -t rsa (3x Enter) 
 # ssh-copy-id -i ~/.ssh/id_rsa.pub 127.0.0.1
 # ansible-playbook /etc/ansible/playbook.yml
-# rm -rf ~/git && sudo rm -rf /etc/ansible && git clone https://github.com/fabiokerber/Packer.git ~/git && sudo mkdir -p /etc/ansible && sudo cp -R ~/git/1.zbx_awx_sh/packer/v5/ansible/* /etc/ansible/ && sudo touch /var/log/ansible.log && sudo chmod 775 /var/log/ansible.log
+# rm -rf ~/git && sudo rm -rf /etc/ansible && git clone https://github.com/fabiokerber/Packer.git ~/git && sudo mkdir -p /etc/ansible && sudo cp -R ~/git/1.zbx_awx_sh/packer/v5/ansible/* /etc/ansible/ && sudo touch /var/log/ansible.log && sudo chmod 777 /var/log/ansible.log

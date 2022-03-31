@@ -1,9 +1,8 @@
 ---
 
 - name: OPERATING SYSTEM | Set timezone America/Sao_Paulo
-  shell: "{{ item }}"
-  with_items:
-    - timedatectl set-timezone America/Sao_Paulo
+  community.general.timezone:
+    name: America/Sao_Paulo
 
 - name: OPERATING SYSTEM | Update system
   yum:
