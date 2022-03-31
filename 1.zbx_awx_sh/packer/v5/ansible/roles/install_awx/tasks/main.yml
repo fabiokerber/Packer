@@ -59,7 +59,7 @@
   ansible.builtin.shell: make deploy
   args:
     chdir: /usr/local/src/awx-operator
-    executable: /bin/bash
+#    executable: /bin/bash
   environment:
     NAMESPACE: awx
   become_method: su
