@@ -85,7 +85,7 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
-    with_items:
+  with_items:
     - /usr/local/src/awx-operator
     - /usr/local/src/awx-on-k3s
     - /data/postgres
@@ -143,6 +143,5 @@
   become_method: su
   become_exe: sudo su -
   become_user: root
-
 
 ...
