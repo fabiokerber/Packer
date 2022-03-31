@@ -31,4 +31,21 @@
     regexp: '^SELINUX='
     line: SELINUX=permissive
 
+- name: AWX | Install/Configure K3s
+  shell: "{{ item }}"
+  with_items:
+    - curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+
+- name: OPERATING SYSTEM | Create folder /usr/local/src/awx-operator
+  ansible.builtin.file:
+    path: /usr/local/src/awx-operator
+    state: directory
+    mode: '0755'
+
+- name: AWX | Clone repo AWX-OPERATOR
+  ansible.builtin.git:
+    repo: 'https://github.com/ansible/awx-operator.git'
+    dest: /usr/local/src/awx-operator
+    version: devel
+
 ...
