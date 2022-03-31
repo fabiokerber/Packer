@@ -135,9 +135,7 @@
     group: 0
 
 - name: AWX | Deploy awx-on-k3s
-  ansible.builtin.shell: kubectl apply -k
-  args:
-    chdir: /usr/local/src/awx-on-k3s/base
+  ansible.builtin.shell: kubectl apply -k /usr/local/src/awx-on-k3s/base
   environment:
     NAMESPACE: awx
   become_method: su
