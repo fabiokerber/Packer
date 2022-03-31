@@ -1,7 +1,6 @@
 ---
 
 packages:
-  - git
   - make
   - gcc
   - perl-core
