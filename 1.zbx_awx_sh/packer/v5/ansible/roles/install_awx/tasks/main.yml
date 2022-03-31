@@ -55,11 +55,14 @@
 #  environment:
 #    NAMESPACE: awx
 
-- name: AWX | Setting environment variable
+- name: AWX | Deploy awx-operator
   ansible.builtin.shell: make deploy
   args:
     chdir: /usr/local/src/awx-operator
     executable: /bin/bash
   environment:
     NAMESPACE: awx
+  become_method: su
+  become_exe: sudo su -
+  become_user: azureuser
 ...
