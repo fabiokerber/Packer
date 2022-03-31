@@ -6,7 +6,7 @@
 |`v2`| Arquivo Packer único com todos os dados para criação da imagem + Provisioner "Shell local"
 |`v3`| Arquivo Packer único com todos os dados para criação da imagem + Provisioner "Shell script" + AWX v20.0.1
 |`v4`| Estrutura de arquivos Packer + Provisioner "Shell script" + Ansible
-|`v5`| Estrutura de arquivos Packer + Provisioner "Ansible" + AWX
+|`v5`| Estrutura de arquivos Packer + Provisioner "Ansible" + AWX (necessário ter ansible instalado na máquina local)
 
 Download Packer<br>
 ```
