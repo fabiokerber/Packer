@@ -1,7 +1,7 @@
 locals {
-  now = timestamp()
-  brasilia_tz  = timeadd(local.now, "-3h") # Brazil's official time
-  date_br = formatdate("DDMMYYYYhhmm", local.brasilia_tz)
+  now         = timestamp()
+  brasilia_tz = timeadd(local.now, "-3h") # Brazil's official time
+  date_br     = formatdate("DDMMYYYYhhmm", local.brasilia_tz)
 }
 
 source "azure-arm" "awx" {
