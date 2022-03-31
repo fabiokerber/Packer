@@ -16,6 +16,6 @@ source "azure-arm" "awx" {
   os_type                           = "${var.os_type}"
   temp_compute_name                 = "${var.temp_compute_name}"
   vm_size                           = "${var.vm_size}"
-  managed_image_name                = "${local.date_br}_${var.temp_compute_name}-"
+  managed_image_name                = "img-${local.date_br}-${var.temp_compute_name}"
   managed_image_resource_group_name = "${var.managed_image_resource_group_name}"
 }

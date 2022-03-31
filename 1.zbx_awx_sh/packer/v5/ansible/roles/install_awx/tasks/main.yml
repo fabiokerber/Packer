@@ -142,4 +142,8 @@
   become_exe: sudo su -
   become_user: root
 
+- name: AWX | Pause for 30 mins to wait end of deploy
+  pause:
+    minutes: 30
+
 ...
