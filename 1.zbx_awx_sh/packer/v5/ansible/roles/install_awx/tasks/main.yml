@@ -48,11 +48,18 @@
     dest: /usr/local/src/awx-operator
     version: 0.20.0
 
+#- name: AWX | Setting environment variable
+#  shell: "{{ item }}"
+#  with_items:
+#    - cd /usr/local/src/awx-operator && make deploy
+#  environment:
+#    NAMESPACE: awx
+
 - name: AWX | Setting environment variable
-  shell: "{{ item }}"
-  with_items:
-    - cd /usr/local/src/awx-operator && make deploy
+  ansible.builtin.shell: make deploy
+  args:
+    chdir: /usr/local/src/awx-operator
+    executable: /bin/bash
   environment:
     NAMESPACE: awx
-
 ...
