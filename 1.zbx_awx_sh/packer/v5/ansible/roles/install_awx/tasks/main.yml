@@ -36,7 +36,7 @@
   with_items:
     - curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
 
-- name: OPERATING SYSTEM | Create folder /usr/local/src/awx-operator
+- name: AWX | Create folder /usr/local/src/awx-operator
   ansible.builtin.file:
     path: /usr/local/src/awx-operator
     state: directory
@@ -46,6 +46,12 @@
   ansible.builtin.git:
     repo: 'https://github.com/ansible/awx-operator.git'
     dest: /usr/local/src/awx-operator
-    version: devel
+    version: 0.20.0
+
+- name: AWX | Setting environment variable
+  shell: "{{ item }}"
+  with_items:
+    - export NAMESPACE=awx
+
 
 ...
