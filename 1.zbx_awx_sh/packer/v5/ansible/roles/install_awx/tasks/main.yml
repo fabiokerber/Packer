@@ -64,6 +64,6 @@
     NAMESPACE: awx
   become_method: su
   become_exe: sudo su -
-  become_user: azureuser
+  become_user: root
 
 ...
