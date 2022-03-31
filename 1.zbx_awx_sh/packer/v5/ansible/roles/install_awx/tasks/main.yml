@@ -86,26 +86,26 @@
     state: directory
     mode: '0755'
   with_items:
-    - /usr/local/src/awx-operator
-    - /usr/local/src/awx-on-k3s
+    - /awx/awx-operator
+    - /awx/awx-on-k3s
     - /data/postgres
     - /data/projects
 
 - name: AWX | Clone repo AWX-OPERATOR
   ansible.builtin.git:
     repo: 'https://github.com/ansible/awx-operator.git'
-    dest: /usr/local/src/awx-operator
+    dest: /awx/awx-operator
     version: 0.20.0
 
 - name: AWX | Clone repo AWX-ON-K3S
   ansible.builtin.git:
     repo: 'https://github.com/kurokobo/awx-on-k3s.git'
-    dest: /usr/local/src/awx-on-k3s
+    dest: /awx/awx-on-k3s
 
 - name: AWX | Deploy awx-operator
   ansible.builtin.shell: make deploy
   args:
-    chdir: /usr/local/src/awx-operator
+    chdir: /awx/awx-operator
   environment:
     NAMESPACE: awx
   become_method: su
@@ -115,7 +115,7 @@
 - name: AWX | Create certificate
   ansible.builtin.shell: openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -out ./base/tls.crt -keyout ./base/tls.key -subj "/CN=${AWX_HOST}/O=${AWX_HOST}" -addext subjectAltName="DNS:${AWX_HOST}"
   args:
-    chdir: /usr/local/src/awx-on-k3s
+    chdir: /awx/awx-on-k3s
   environment:
     AWX_HOST: vmawxbrsh.brazilsouth.cloudapp.azure.com
   become_method: su
@@ -124,7 +124,7 @@
 
 - name: AWX | Set hostname
   ansible.builtin.lineinfile:
-    path: /usr/local/src/awx-on-k3s/base/awx.yaml
+    path: /awx/awx-on-k3s/base/awx.yaml
     regexp: 'hostname: awx.example.com'
     line: 'hostname: vmawxbrsh.brazilsouth.cloudapp.azure.com'
 
@@ -134,8 +134,8 @@
     owner: 1000
     group: 0
 
-- name: AWX | Deploy awx-operator
-  ansible.builtin.shell: kubectl apply -k /usr/local/src/awx-on-k3s/base
+- name: AWX | Deploy awx-on-ks3
+  ansible.builtin.shell: kubectl apply -k /awx/awx-on-k3s/base
   environment:
     NAMESPACE: awx
   become_method: su
