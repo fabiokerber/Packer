@@ -51,7 +51,8 @@
 - name: AWX | Setting environment variable
   shell: "{{ item }}"
   with_items:
-    - export NAMESPACE=awx
-
+    - /usr/local/src/awx-operator && make deploy
+  environment:
+    NAMESPACE: awx
 
 ...
