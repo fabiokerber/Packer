@@ -161,3 +161,35 @@ image_rg   = "rg-img-br-sh"
 image_name = "vm-img-20220328154216-awx-br-sh"
 image_id   = "/subscriptions/ee6222a2-c6ac-48ae-b6ad-b7fef2589b74/resourceGroups/rg-img-br-sh/providers/Microsoft.Compute/images/vm-img-20220328154216-awx-br-sh"
 ```
+
+## Instalar Ansible e Packer
+Centos 7
+```
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum update -y
+sudo yum install -y python36 python36-devel packer
+sudo pip3 install --upgrade pip && sudo pip3 install --upgrade setuptools
+sudo pip3 install setuptools_rust wheel && sudo pip3 install ansible
+sudo touch /var/log/ansible.log && sudo chmod 777 /var/log/ansible.log
+```
+
+Ubuntu Server
+```
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install packer
+sudo touch /var/log/ansible.log && sudo chmod 777 /var/log/ansible.log
+```
+
+RHEL 7.8
+```
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum update -y
+sudo yum install -y packer yum-utils rh-python38-python.x86_64 rh-python38-python-pip.noarch rh-python38-python-devel.x86_64 '@Development Tools' git libselinux-python3.x86_64
+sudo pip3.6 install --upgrade pip && sudo pip3.6 install --upgrade setuptools
+sudo pip3.6 install setuptools_rust wheel && sudo pip3.6 install ansible
+sudo touch /var/log/ansible.log && sudo chmod 777 /var/log/ansible.log
+```
