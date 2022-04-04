@@ -124,7 +124,7 @@
   ansible.builtin.shell: kubectl apply -k /usr/local/src/awx-on-k3s/base
   environment:
     NAMESPACE: awx
-  become_user: azureuser
+  become_user: root
 
 - name: AWX | Pause for 30 mins to wait end of deploy
   pause:
